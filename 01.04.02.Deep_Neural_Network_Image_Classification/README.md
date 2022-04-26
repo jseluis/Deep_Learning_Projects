@@ -1,9 +1,6 @@
-
-# Backtesting
+##### Deep Neural Network for Image Classification: Application
 
 ## Project Description: 
-
-##### Deep Neural Network for Image Classification: Application
 
 Build a deep network, apply it to cat vs non-cat classification and improve the accuracy as compared to the previous logistic regression model. I will update this Notebook with more information for a multi-classification
 embedding another database.
@@ -20,12 +17,7 @@ Packages:
 - [PIL](http://www.pythonware.com/products/pil/) is used here to test your model with your own picture at the end.
 - [imageo](https://pypi.org/project/imageio/) to resize the image. Check [imageo documentation](https://imageio.readthedocs.io/en/stable/)
 - dnn_app_utils provides the functions implemented in the "Building your Deep Neural Network: Step by Step" assignment to this notebook.
-- np.random.seed(1) is used to keep all the random function calls consistent. It will help us grade your work.
-
-If you do not have these packages installed please try:
-
-* !pip install numpy h5py matplotlib scipy PIL imageio
-
+- np.random.seed(1) is used to keep all the random function calls consistent. It will help us grade 
 
 Customize:
 
@@ -40,103 +32,29 @@ Customize:
 
 ###### *Additional Resources*
 
-# Shift Daily Returns Data (Steps)
+Am I a Cat? This model tells me Yes.
 
-* The variable frames contains the data from daily_return and data correctly shifted.
+```py 
+from PIL import Image
+import numpy as np
 
-* There's a time delay of 2 in daily returns to make the live trading much more realistic. Check out this lesson video which describes how 2 day time-delay incorporating daily returns is realistic for simulated live trading. https://www.youtube.com/watch?v=TYYV3MnhCP0
-Build Universe Based on Filters
+my_image = "joseluis.jpg" # change this to the name of your image file 
+my_label_y = [1] # the true class of your image (1 -> cat, 0 -> non-cat)
+fname = "images/" + my_image
+image = np.array(imageio.imread(fname))
 
-* The function get_universe correctly creates a stock universe by selecting only those companies that have a market capitalization of at least 1 billion dollars (1e9) OR that are in the previous day's holdings, even if on the current day, the company no longer meets the 1 billion dollar criteria.
+my_image = np.array(Image.fromarray(image).resize(size=(num_px,num_px))).reshape((num_px*num_px*3,1))
 
-* They should use the .copy() attribute to create a copy of the data and they should drop the column containing the daily return from the universe dataframe.
+my_image = my_image/255.
+my_predicted_image = predict(my_image, my_label_y, parameters)
 
-* The returned universe dataframe should have a shape of (2265, 93)
+plt.imshow(image)
+print ("y = " + str(np.squeeze(my_predicted_image)) \
+       + ", your L-layer model predicts a \"" + 
+       \classes[int(np.squeeze(my_predicted_image)),].decode("utf-8") +  "\" picture.")
 
-* The stocks in the previous day's holdings are to be considered because the trades are executed every day. It is good to drop the column containing the daily return from the universe dataframe. Because we need to make sure that we are not looking at returns when forming the portfolio. It is also stated in this rubric.
-
-# Factor covariance matrix
-
-* The function diagonal_factor_cov correctly creates the factor covariance matrix. The factor matrix must be scaled by (0.01**2). They must use the given colnames function to get the column names from X and use the statement 'covariance[date]' to get the covariances for the given date.
-
-* The returned factor covariance matrix should have shape (77, 77)
-
-* Alpha Combination: The function get_B_alpha correctly creates a matrix of alpha factors. They must use the given get_formula and model_matrix functions.
-
-* The returned B_alpha should be of type patsy.design_info.DesignMatrix and it should have shape (2265, 4). The 4 columns of this matrix should correspond to the 4 alpha factors chosen at the beginning, namely:
-
-                "USFASTD_1DREVRSL"
-                "USFASTD_EARNYILD"
-                "USFASTD_VALUE"
-                "USFASTD_SENTMT"
-
-* The function get_alpha_vec correctly creates a vector of alpha factors. To do this, they must add the rows of the Matrix of Alpha Factors and multiply the result by 1e-4.
-
-* The returned alpha_vac should have shape (2265,)
-
-# Objective function
-
-* The obj_func(h) function correctly implements the objective function. The equation of the objective function is given in the notebook.
-
-* Setting up the objective function to reduce the factor risk, idiosyncratic risk, and transaction costs and maximize the expected portfolio returns. You can relate this project 3 where you setup the portfolio optimization technique for the first time in AITND using cvxpy
-
-# Gradient 
-
-* The grad_func(h) function correctly implements the gradient of the objective function. The equation of the gradient of the objective function is given in the notebook.
-
-* The optimizer which is used in the scipy.optimize.fmin_l_bfgs_b gets the closed formed solution. If you pass 1 in to the approx_grad as shown in the docs will make the optimizer to get the open formed solution.
-https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin_l_bfgs_b.html
-
-* Gradient descent gets the open-formed solution i.e. it is an iterative algorithm that takes smaller steps to the reach the optimal values. On the other hand, the optimizers that approach the problem analytically i.e. using the calculus/math that has been taught in the lessons.
-
-* Check out this lesson video https://www.youtube.com/watch?time_continue=1&v=rhVIF-nigrY
-It is taken from extra-curricular section of Deep Learning 24. Gradient Descent
-
-* Compare gradient descent with the closed form approach used within the cvxpy in this lesson video
-https://www.youtube.com/watch?time_continue=118&v=ISRlP1GeOjU
-Also check out this blog with 1. and 2. bullet points for quick comparison. https://sebastianraschka.com/faq/docs/closed-form-vs-gd.html
-
-
-* The function get_h_star correctly optimizes the objective function using the following functions obj_func, grad_func, and scipy.optimize.fmin_l_bfgs_b.
-
-* The returned h_star should have shape (2265,) 
-
-* The function get_risk_exposures correctly calculates the portfolio's risk exposures
-
-* The returned risk_exposures Pandas series should have shape (77,). The index of this Pandas Series should correspond to the risk factors such as 'USFASTD_AERODEF', 'USFASTD_AIRLINES', 'USFASTD_ALUMSTEL', ......
-
-* The function get_portfolio_alpha_exposure correctly calculates the portfolio's alpha exposures.
-
-* The returned portfolio_alpha_exposure Pandas series should have shape (4,). The index of this Pandas Series should should correspond to the 4 alpha factors chosen at the beginning, namely:
-
-                "USFASTD_1DREVRSL"
-                "USFASTD_EARNYILD"
-                "USFASTD_VALUE"
-                "USFASTD_SENTMT"
-
-# Transaction Costs
-
-* The function get_total_transaction_costs correctly calculates the total transaction costs according to the equation given in the notebook.
-
-* You can always pickle and serialize these objects and save it to the workspace. So that you don't have to re-run all the variables again. That is you can pick up the work where you left off in the last session. Below are the code snippets of pickling the port dictionary which can also be done the same for the trades, result and previous_holdings variables
-
-```python
-#saving the port file
-import pickle
-pickle.dump( port, open( "file-name.p", "wb" ) )
-#loading the port file
-import pickle
-port = pickle.load( open( "file-name.p", "rb" ) )
 ```
+Accuracy: 1.0
+y = 1.0, your L-layer model predicts a "cat" picture. :audacious
 
-# Profit-and-Loss (PnL) attribution
-
-* Calculate the PnL attributed to the alpha factors, the PnL attributed to the risk factors, and attribution to cost.
-
-* Calculate the alpha and risk exposures they must use the provided partial_dot_product function
-
-* Use the partial_dot_product function
-
-# Build portfolio characteristics
-
-* Calculate the sum of long positions, short positions, net positions, gross market value, and amount of dollars traded.
+ ![myImage](images/amIaCat.jpg)

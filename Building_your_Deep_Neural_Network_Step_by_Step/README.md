@@ -45,4 +45,4 @@ To build your neural network, you will be implementing several "helper functions
 
 
 **Note** 
-For every forward function, there is a corresponding backward function. That is why at every step of your forward module you will be storing some values in a cache. The cached values are useful for computing gradients. In the backpropagation module you will then use the cache to calculate the gradients. This assignment will show you exactly how to carry out each of these steps. 
+For every forward function, there is a corresponding backward function. That is why at every step of your forward module the values are stored in a cache. The cached values are useful for computing gradientsm and the backpropagation module use the cache to calculate the gradients.

@@ -2,10 +2,10 @@
 
 ## Project Description: 
 
-Build a deep network, apply it to cat vs non-cat classification and improve the accuracy as compared to the previous logistic regression model. I will update this Notebook with more information for a multi-classification
-embedding another database.
+Build a deep network, apply it to cat vs non-cat classification and improve the accuracy as compared to the previous logistic regression model. I will update this Notebook with more information for a multi-classification embedding another database.
 
-Adapted from my Projects & Solutions at Deep Learning Specialization at Coursera
+Adapted from my Project at Coursera:
+[Certificate](https://www.coursera.org/account/accomplishments/certificate/C33QNMKHF2CM)
 
 ### Goal:
 - <b>Build and apply a deep neural network to supervised learning.</b>

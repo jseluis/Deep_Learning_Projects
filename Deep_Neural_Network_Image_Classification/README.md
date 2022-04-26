@@ -1,4 +1,4 @@
-# Deep Neural Network for Image Classification: Application
+# Deep Neural Network for Image Classification: Cat?
 
 ## Project Description: 
 

@@ -19,16 +19,6 @@ Packages:
 - dnn_app_utils provides the functions implemented in the "Building your Deep Neural Network: Step by Step" assignment to this notebook.
 - np.random.seed(1) is used to keep all the random function calls consistent. It will help us grade 
 
-Customize:
-
-    Try backtesting on different time periods and interpret the final results.
-    Try different factors to be their alphas.
-    Try different weights for each alpha, based on some metric that tells us how confident we are in that alpha, such as a rolling average of the sharpe ratio for each alpha factor.
-    Try different transaction cost models. Read the paper "Crossover from Linear to Square-Root Market Impact”. It has a good overview of the transaction cost models, and it also references other papers that are useful in studying transaction cost models.
-    Note about testing previous alphas: To test the alphas that you've created using the QuoteMedia data source, we would need a mapping file that identifies which cusip is associated with which barra ID. We currently aren't able to provide this in the classroom.
-
-["Crossover from Linear to Square-Root Market Impact”](https://arxiv.org/pdf/1811.05230.pdf)
-
 
 ###### * Extra *
 

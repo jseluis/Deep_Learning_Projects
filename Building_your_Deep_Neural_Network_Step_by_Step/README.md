@@ -1,20 +1,20 @@
 # Building your Deep Neural Network: Step by Step
 
+## Project Description: 
+
+Build the functions used in the deep network from scratch. The second Project is
+to use a Deep Neural Network for classification of images as cat or non-cat.
+
+Adapted from my Project at Coursera:
+[Certificate](https://www.coursera.org/account/accomplishments/certificate/C33QNMKHF2CM/)
+
 - Implement all the functions required to build a deep neural network.
 - Build a deep neural network for image classification.
 - Use non-linear units like ReLU to improve your model
 - Build a deeper neural network (with more than 1 hidden layer)
 - Implement an easy-to-use neural network class
 
-**Notation**:
-- Superscript $[l]$ denotes a quantity associated with the $l^{th}$ layer. 
-    - Example: $a^{[L]}$ is the $L^{th}$ layer activation. $W^{[L]}$ and $b^{[L]}$ are the $L^{th}$ layer parameters.
-- Superscript $(i)$ denotes a quantity associated with the $i^{th}$ example. 
-    - Example: $x^{(i)}$ is the $i^{th}$ training example.
-- Lowerscript $i$ denotes the $i^{th}$ entry of a vector.
-    - Example: $a^{[l]}_i$ denotes the $i^{th}$ entry of the $l^{th}$ layer's activations).
-    
-    ## 1 - Packages
+## 1 - Packages
 
 - [numpy](www.numpy.org) is the main package for scientific computing with Python.
 - [matplotlib](http://matplotlib.org) is a library to plot graphs in Python.
@@ -40,8 +40,9 @@ To build your neural network, you will be implementing several "helper functions
     - Stack [LINEAR->RELU] backward L-1 times and add [LINEAR->SIGMOID] backward in a new L_model_backward function
 - Finally update the parameters.
 
-<img src="images/final outline.png" style="width:800px;height:500px;">
-<caption><center> **Figure 1**</center></caption><br>
+<img src="images/final outline.png" style="width:400px;height:250px;">
+<caption><center> ****</center></caption><br>
 
 
-**Note** that for every forward function, there is a corresponding backward function. That is why at every step of your forward module you will be storing some values in a cache. The cached values are useful for computing gradients. In the backpropagation module you will then use the cache to calculate the gradients. This assignment will show you exactly how to carry out each of these steps. 
+**Note** 
+For every forward function, there is a corresponding backward function. That is why at every step of your forward module you will be storing some values in a cache. The cached values are useful for computing gradients. In the backpropagation module you will then use the cache to calculate the gradients. This assignment will show you exactly how to carry out each of these steps. 

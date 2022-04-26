@@ -1,4 +1,4 @@
-##### Deep Neural Network for Image Classification: Application
+# Deep Neural Network for Image Classification: Application
 
 ## Project Description: 
 
@@ -30,9 +30,9 @@ Customize:
 ["Crossover from Linear to Square-Root Market Impact”](https://arxiv.org/pdf/1811.05230.pdf)
 
 
-###### *Additional Resources*
+###### * Extra *
 
-Am I a Cat? This model tells me Yes.
+Apparently I am a Cat.
 
 ```py 
 from PIL import Image
